@@ -5,11 +5,11 @@ import Menubar from "../../assets/img/menubar.svg";
 import stomp from "stompjs";
 import SockJS from "sockjs-client/dist/sockjs";
 
-const sockJS = new SockJS("http://172.20.10.11:8080/ws");
+const sockJS = new SockJS("http://192.168.227.229:8080/ws");
 const stompClient = stomp.over(sockJS);
 
 function Chatting() {
-  // const [message, setMessage] = useState("");
+  const [message2, setMessage] = useState("");
   useEffect(() => {
     // const socket = io("ws://172.16.1.173:8080/ws", {
     //   cors: {
@@ -36,6 +36,10 @@ function Chatting() {
     });
   }, []);
 
+  const onChange = (e) => {
+    setMessage(e.target.value);
+  };
+
   const sendMessage = () => {
     const message = {
       chatId: 1,
@@ -43,7 +47,7 @@ function Chatting() {
       recipientId: 2,
       senderName: "kim",
       recipientName: "kim",
-      content: "제발",
+      content: { message2 },
       timestamp: new Date(),
     };
     stompClient.send("/app/chat", {}, JSON.stringify(message));
@@ -63,9 +67,7 @@ function Chatting() {
           </C.InfoWrap>
         </C.ProfileWrap>
         <C.Profilebar />
-        {/* <input onChange={() => {
-          setMessage()
-        }}></input> */}
+        <input onChange={onChange} value={message2}></input>
         <button onClick={sendMessage}></button>
       </C.ChatWrap>
     </>
