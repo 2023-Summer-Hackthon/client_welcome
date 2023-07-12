@@ -77,3 +77,7 @@ export const MainSubTitle = styled.div`
 export const AskWrap = styled.div`
   width: 90vw;
 `;
+export const ChatWrap2 = styled.div`
+  display: flex;
+  flex-direction: row;
+`;

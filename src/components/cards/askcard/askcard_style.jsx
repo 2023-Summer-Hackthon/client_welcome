@@ -44,9 +44,9 @@ export const FlagWrap = styled.div`
   margin-top: 0.5rem;
 `;
 
-export const Flagimg = styled.img`
-  width: 0.97444rem;
-  height: 0.9375rem;
+export const Flag = styled.img`
+  width: 1.5rem;
+  height: 1rem;
 `;
 
 export const Question_info = styled.div`

@@ -4,11 +4,13 @@ import Logo from "../../assets/img/logo.svg";
 import Menubar from "../../assets/img/menubar.svg";
 import stomp from "stompjs";
 import SockJS from "sockjs-client/dist/sockjs";
-
+import { useNavigate } from "react-router-dom";
 const sockJS = new SockJS("http://192.168.227.229:8080/ws");
 const stompClient = stomp.over(sockJS);
 
 function Chatting() {
+  const navigate = useNavigate();
+  const [messages, setMessages] = useState([]);
   const [message2, setMessage] = useState("");
   useEffect(() => {
     // const socket = io("ws://172.16.1.173:8080/ws", {
@@ -47,7 +49,7 @@ function Chatting() {
       recipientId: 2,
       senderName: "kim",
       recipientName: "kim",
-      content: { message2 },
+      content: message2,
       timestamp: new Date(),
     };
     stompClient.send("/app/chat", {}, JSON.stringify(message));
@@ -57,7 +59,7 @@ function Chatting() {
       <C.ChatWrap>
         <C.Header>
           <C.Menubar src={Menubar}></C.Menubar>
-          <C.Logo src={Logo}></C.Logo>
+          <C.Logo src={Logo} onClick={() => navigate("/main")}></C.Logo>
         </C.Header>
         <C.ProfileWrap>
           <C.ProfileImg src={Logo}></C.ProfileImg>
@@ -67,8 +69,10 @@ function Chatting() {
           </C.InfoWrap>
         </C.ProfileWrap>
         <C.Profilebar />
-        <input onChange={onChange} value={message2}></input>
-        <button onClick={sendMessage}></button>
+        <C.InputBar>
+          <C.Input onChange={onChange} value={message2}></C.Input>
+          <C.Button onClick={sendMessage}>+</C.Button>
+        </C.InputBar>
       </C.ChatWrap>
     </>
   );

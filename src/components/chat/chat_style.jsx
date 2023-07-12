@@ -86,3 +86,40 @@ export const Info = styled.div`
   line-height: normal;
   margin-left: 0.5rem;
 `;
+
+export const Input = styled.input`
+  width: 80vw;
+  height: 5vh;
+  border-radius: none;
+  background-color: #f2f2f2;
+  border-color: aliceblue;
+  color: black;
+  :focus {
+    outline-color: #4068fe;
+  }
+`;
+
+export const Button = styled.div`
+  width: 12vw;
+  height: 12vw;
+  border-radius: 100%;
+  background-color: #4068fe;
+  color: #ffffff;
+
+  font-size: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :hover {
+    transition: 50ms;
+    background-color: #193ec4;
+  }
+`;
+export const InputBar = styled.div`
+  width: 100vw;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 50vh;
+`;

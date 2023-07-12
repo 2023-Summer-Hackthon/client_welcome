@@ -1,7 +1,7 @@
 import React from "react";
 import * as C from "./chatcard_style";
 import Profile from "../../../assets/img/logo.svg";
-function Chatcard() {
+function Chatcard(props) {
   return (
     <>
       <C.ChatcardLayout>
@@ -9,7 +9,7 @@ function Chatcard() {
           <C.ProfileWrap>
             <C.ProfileImg src={Profile}></C.ProfileImg>
             <C.InfoWrap>
-              <C.Name>Trần Biên</C.Name>
+              <C.Name>{props.name}</C.Name>
               <C.Info>남성 | EN, KO, VIET</C.Info>
             </C.InfoWrap>
           </C.ProfileWrap>
